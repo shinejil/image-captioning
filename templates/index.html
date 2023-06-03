@@ -1,0 +1,32 @@
+{% extends "base.html" %} {% block content %}
+
+<h2>Image Captioning</h2>
+
+<div>
+    <form id="upload-file" method="post" enctype="multipart/form-data" action="{{ url_for('predict') }}">
+        <label for="imageUpload" class="upload-label">
+            Choose image
+        </label>
+        <input type="file" name="file" id="imageUpload" accept=".png, .jpg, .jpeg">
+        <div>
+            <button type="submit" class="btn btn-primary btn-lg" id="btn-predict">Generate Captions</button>
+        </div>
+    </form>
+    <div class="image-section">
+        <div class="img-preview">
+            <div id="imagePreview">
+            </div>
+        </div>
+    </div>
+
+    <div class="loader" style="display:none;"></div>
+    <ul>
+        {% for caption in captions %}
+        <li>{{ caption }}</li>
+        {% endfor %}
+    </ul>
+</div>
+{% endblock %}
+
+
+
